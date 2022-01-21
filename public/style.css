@@ -1,0 +1,21 @@
+@keyframes cool {
+    from,to {
+        color:black;
+    }
+    25% {
+        color:blue;
+    }
+    50% {
+        color:green;
+    }
+    75% {
+        color:brown;
+    }
+}
+
+#cool {
+    font-weight: bold;
+    animation-name: cool;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}

@@ -1,0 +1,6 @@
+vendor
+
+composer.lock
+public/.htaccess
+.htaccess
+App/Config.php
