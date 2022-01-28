@@ -31,11 +31,15 @@ $router = new Core\Router();
 $router->add('', ['controller' => 'Home', 'action' => 'index']);
 
 // Route with parameter
-$router->add('{id:\d+}', ['controller' => 'Home', 'action' => 'indexWithId']);
+$router->add('{num:\d+}', ['controller' => 'Home', 'action' => 'indexWithNum']);
 
 // Route with model
 $router->add('users', ['controller' => 'Home', 'action' => 'users']);
 $router->add('users/{id:\d+}', ['controller' => 'Home', 'action' => 'usersWithId']);
+
+$router->add('events', ['controller' => 'Home', 'action' => 'events']);
+$router->add('events/{id:\d+}', ['controller' => 'Home', 'action' => 'eventsWithId']);
+
 // JSON format
 $router->add('users.json', ['controller' => 'Home', 'action' => 'usersJson']);
 $router->add('users/{id:\d+}.json', ['controller' => 'Home', 'action' => 'usersWithIdJson']);

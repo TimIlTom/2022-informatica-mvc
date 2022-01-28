@@ -1,5 +1,0 @@
-RewriteEngine On
-RewriteBase /nomeutente/2022-php-mvc-template
-
-RewriteCond %{REQUEST_URI} !^/nomeutente/2022-php-mvc-template/public
-RewriteRule (.*) public/$1 [R=302,L]

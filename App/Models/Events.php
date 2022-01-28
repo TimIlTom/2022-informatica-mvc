@@ -9,7 +9,7 @@ use PDO;
  *
  * PHP version 7.0
  */
-class User extends \Core\Model
+class Events extends \Core\Model
 {
 
     /**
@@ -20,33 +20,33 @@ class User extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT utente_id, nome FROM utenti');
+        $stmt = $db->query('SELECT evento_id, titolo FROM eventi');
         $result = array();
 
         if ($stmt->num_rows > 0) {
             // output data of each row
             while($row = $stmt->fetch_assoc()) {
                 $obj = [
-                    "user_id" => $row["utente_id"],
-                    "name" => $row["nome"],
+                    "evento_id" => $row["evento_id"],
+                    "titolo" => $row["titolo"],
                 ];
-                array_push($result,$obj);
+                array_push($result, $obj);
             }
         }
         return $result;
     }
 
-    public static function getUser($id)
+    public static function getEvents($id)
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT utente_id, nome FROM utenti WHERE utente_id='.$id);
+        $stmt = $db->query('SELECT evento_id, titolo FROM eventi WHERE evento_id='.$id);
         $result = array();
         if ($stmt->num_rows > 0) {
             // output data of each row
             $row = $stmt->fetch_assoc();
             $obj = [
-                "user_id" => $row["utente_id"],
-                "name" => $row["nome"],
+                "evento_id" => $row["evento_id"],
+                "titolo" => $row["titolo"]
             ];
             array_push($result,$obj);
         }

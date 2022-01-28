@@ -7,7 +7,13 @@
     <title>PHP MVC Template</title>
 </head>
 <body>
-    OK, I got this number: <span id="cool">{{num}}</span>.
+    <h1>Events</h1>
+    <ul>
+        {% for event in events %}
+        <li>{{event.evento_id}}: <span class="cool">{{event.titolo}}</span></li>
+        {% endfor %}
+    </ul>
+
     <link rel="stylesheet" href="style.css">
 </body>
 </html>

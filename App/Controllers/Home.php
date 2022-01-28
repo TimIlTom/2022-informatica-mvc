@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use \Core\View;
 use \App\Models\User;
+use \App\Models\Events;
 
 /**
  * Home controller
@@ -23,10 +24,10 @@ class Home extends \Core\Controller
         View::renderTemplate('Home/index.html');
     }
 
-    public function indexWithIdAction()
+    public function indexWithNumAction()
     {
-        $id = $this->route_params["id"];
-        View::renderTemplate('Home/index_id.html',['id' => $id]);
+        $num = $this->route_params["num"];
+        View::renderTemplate('Home/index_id.html',['num' => $num]);
     }
 
     public function usersAction() {
@@ -52,6 +53,19 @@ class Home extends \Core\Controller
 
     public function usersJs() {
         View::renderTemplate('Home/users_js.html');
+    }
+
+    public function eventsAction(){
+
+        $events = Events::getAll();
+        View::renderTemplate('Home/events.html',['events' => $events]);
+    }
+
+    public function eventsWithIdAction(){
+
+        $id = $this->route_params["id"];
+        $events = Events::getEvents($id);
+        View::renderTemplate('Home/events.html',['events' => $events]);
     }
 
 }
