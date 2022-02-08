@@ -33,6 +33,7 @@ class User extends \Core\Model
                 array_push($result,$obj);
             }
         }
+        static::closeDB();
         return $result;
     }
 
@@ -50,6 +51,7 @@ class User extends \Core\Model
             ];
             array_push($result,$obj);
         }
+        static::closeDB();
         return $result;
     }
 }

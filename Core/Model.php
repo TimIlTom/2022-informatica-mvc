@@ -12,7 +12,7 @@ use App\Config;
  */
 abstract class Model
 {
-
+    private static $db = null;
     /**
      * Get the PDO database connection
      *
@@ -20,13 +20,13 @@ abstract class Model
      */
     protected static function getDB()
     {
-        static $db = null;
+        // static $db = null;
 
-        if ($db === null) {
-            $db = new mysqli(Config::DB_HOST,Config::DB_USER,Config::DB_PASSWORD,Config::DB_NAME);
+        if (self::$db === null) {
+            self::$db = new mysqli(Config::DB_HOST,Config::DB_USER,Config::DB_PASSWORD,Config::DB_NAME);
 
 			// Check connection
-			if ($db -> connect_errno) {
+			if (self::$db -> connect_errno) {
 			  $message = "Non rieco a connettermi: " . $mysqli -> connect_error;
 			  $file = "Model.php";
 			  $line = "29";
@@ -34,6 +34,9 @@ abstract class Model
 			}
         }
 
-        return $db;
+        return self::$db;
+    }
+    protected static function closeDB() {
+        mysqli_close(self::$db);
     }
 }
