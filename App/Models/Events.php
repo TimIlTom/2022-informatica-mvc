@@ -20,7 +20,7 @@ class Events extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT evento_id, titolo FROM eventi');
+        $stmt = $db->query('SELECT evento_id, titolo, costo FROM eventi');
         $result = array();
 
         if ($stmt->num_rows > 0) {
@@ -29,6 +29,7 @@ class Events extends \Core\Model
                 $obj = [
                     "evento_id" => $row["evento_id"],
                     "titolo" => $row["titolo"],
+                    "costo" => $row["costo"]
                 ];
                 array_push($result, $obj);
             }

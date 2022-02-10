@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\Events;
 use \Core\View;
 use \App\Models\User;
 
@@ -54,4 +55,14 @@ class Home extends \Core\Controller
         View::renderTemplate('Home/users_js.html');
     }
 
+    public function eventsAction() {
+        $events = Events::getAll();
+        echo json_encode($events);
+        //View::renderTemplate('Home/events.html',['events' => $events]);
+    }
+
+    public function eventsWithIdAction() {
+        $events = Events::getAll();
+        View::renderTemplate('Home/events.html',['events' => $events]);
+    }
 }
