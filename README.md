@@ -1,2 +1,2 @@
 # Link API swagger
-https://app.swaggerhub.com/apis/Progetto-Barbiere/ProgettoBarbiere/1.0.0
+[Link Swagger](https://app.swaggerhub.com/apis/Progetto-Barbiere/ProgettoBarbiere/1.0.0#/)

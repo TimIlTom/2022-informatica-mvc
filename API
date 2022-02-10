@@ -1,0 +1,174 @@
+swagger: '2.0'
+info:
+  description: This is a simple API
+  version: 1.0.0
+  title: Simple user API
+  # put the contact info for your development or API team
+  contact:
+    email: gi270903@gmail.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: developers
+  description: Operations available to regular developers
+
+paths:
+  /users.json:
+    get:
+      tags:
+      - developers
+      summary: get all users list
+      operationId: searchUsers
+      description: |
+        You get a list of all
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchById
+        description: give a specific user
+        required: false
+        type: integer
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        400:
+          description: bad input parameter
+  /users/{id}:
+    get:
+      tags:
+      - developers
+      summary: detail of a single user
+      operationId: userDetail
+      description: |
+        Detail of a single user
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        200:
+          description: list items correctly
+        400:
+          description: bad input parameter
+    put:
+      tags:
+      - developers
+      summary: add a user in list
+      operationId: addUser
+      description: Adds a user in the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: path
+        name: id
+        required: true
+        description: Create an user with id
+        type: integer
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+  
+  /event.json:
+    get:
+      tags:
+      - developers
+      summary: get all events list
+      operationId: searchEvents
+      description: |
+        You get a list of all
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchById
+        description: give a specific evento
+        required: false
+        type: integer
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Event'
+        400:
+          description: bad input parameter
+  
+  /events/{id}:
+    get:
+      tags:
+      - developers
+      summary: detail of a single event
+      operationId: eventDetail
+      description: |
+        Detail of a single event
+      produces:
+      - application/json
+      parameters:
+      - name: id
+        in: path
+        type: string
+        required: true
+      responses:
+        200:
+          description: list items correctly
+        400:
+          description: bad input parameter
+
+definitions:
+  User:
+    
+      type: object
+      required:
+      - id
+      - name
+      properties:
+        user_id:
+          type: integer
+          example: 27
+        name:
+          type: string
+          example: Claudio
+ 
+    
+  Event:
+            
+      type: object
+      required:
+      - title
+      - cost
+      - id
+      properties:
+        title:
+          type: string
+          example: Webinar SQL
+        cost:
+          type: integer
+          example: 1
+        events_id:
+          type: integer
+          example: 20
+
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /Progetto-Barbiere/ProgettoBarbiere/1.0.0
+schemes:
+ - https
