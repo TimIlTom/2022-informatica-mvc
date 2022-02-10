@@ -34,18 +34,20 @@ $router->add('', ['controller' => 'Home', 'action' => 'index']);
 $router->add('{num:\d+}', ['controller' => 'Home', 'action' => 'indexWithNum']);
 
 // Route with model
-$router->add('users', ['controller' => 'Home', 'action' => 'users']);
-$router->add('users/{id:\d+}', ['controller' => 'Home', 'action' => 'usersWithId']);
+$router->add('users.json', ['controller' => 'Home', 'action' => 'users']);
+$router->add('users/{id:\d+}.json', ['controller' => 'Home', 'action' => 'usersWithId']);
 
-$router->add('events', ['controller' => 'Home', 'action' => 'events']);
-$router->add('events/{id:\d+}', ['controller' => 'Home', 'action' => 'eventsWithId']);
+$router->add('events.json', ['controller' => 'Home', 'action' => 'events']);
+$router->add('events/{id:\d+}.json', ['controller' => 'Home', 'action' => 'eventsWithId']);
+
+//$router->add('organizzatori.json', ['controller' => 'Home', 'action' => 'organizzatori']);
 
 // JSON format
-$router->add('users.json', ['controller' => 'Home', 'action' => 'usersJson']);
-$router->add('users/{id:\d+}.json', ['controller' => 'Home', 'action' => 'usersWithIdJson']);
+/*$router->add('users.json', ['controller' => 'Home', 'action' => 'usersJson']);
+$router->add('users/{id:\d+}.json', ['controller' => 'Home', 'action' => 'usersWithIdJson']);*/
 
 // Compose page client-side with JavaScript
-$router->add('users2', ['controller' => 'Home', 'action' => 'usersJs']);
+//$router->add('users2', ['controller' => 'Home', 'action' => 'usersJs']);
 
 $router->add('{controller}/{action}');
     

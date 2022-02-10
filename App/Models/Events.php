@@ -20,7 +20,7 @@ class Events extends \Core\Model
     public static function getAll()
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT evento_id, titolo, costo FROM eventi');
+        $stmt = $db->query('SELECT evento_id, titolo, costo, u.nome, u.cognome FROM eventi as e join utenti as u where e.organizzatore = u.utente_id');
         $result = array();
 
         if ($stmt->num_rows > 0) {
@@ -29,7 +29,8 @@ class Events extends \Core\Model
                 $obj = [
                     "evento_id" => $row["evento_id"],
                     "titolo" => $row["titolo"],
-                    "costo" => $row["costo"]
+                    "costo" => $row["costo"],
+                    "organizzatore" => $row["nome"]." ". $row["cognome"]
                 ];
                 array_push($result, $obj);
             }
@@ -40,14 +41,16 @@ class Events extends \Core\Model
     public static function getEvents($id)
     {
         $db = static::getDB();
-        $stmt = $db->query('SELECT evento_id, titolo FROM eventi WHERE evento_id='.$id);
+        $stmt = $db->query('SELECT evento_id, titolo, costo, u.nome, u.cognome FROM eventi as e join utenti as u where e.organizzatore = u.utente_id');
         $result = array();
         if ($stmt->num_rows > 0) {
             // output data of each row
             $row = $stmt->fetch_assoc();
             $obj = [
                 "evento_id" => $row["evento_id"],
-                "titolo" => $row["titolo"]
+                "titolo" => $row["titolo"],
+                "costo" => $row['costo'],
+                "organizzatore" => $row["nome"]." ". $row["cognome"]
             ];
             array_push($result,$obj);
         }

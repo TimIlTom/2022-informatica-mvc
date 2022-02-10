@@ -32,27 +32,15 @@ class Home extends \Core\Controller
 
     public function usersAction() {
         $users = User::getAll();
-        View::renderTemplate('Home/users.html',['users' => $users]);
-    }
-
-    public function usersJsonAction() {
-        $users = User::getAll();
         echo json_encode($users);
+        //View::renderTemplate('Home/users.html',['users' => $users]);
     }
 
     public function usersWithIdAction() {
         $id = $this->route_params["id"];
         $user = User::getUser($id);
-        View::renderTemplate('Home/user.html',['user' => $user]);
-    }
-    public function usersWithIdJsonAction() {
-        $id = $this->route_params["id"];
-        $users = User::getUser($id);
-        echo json_encode($users);
-    }
-
-    public function usersJs() {
-        View::renderTemplate('Home/users_js.html');
+        echo json_encode($user);
+        //View::renderTemplate('Home/users.html',['user' => $user]);
     }
 
     public function eventsAction() {
@@ -62,7 +50,9 @@ class Home extends \Core\Controller
     }
 
     public function eventsWithIdAction() {
-        $events = Events::getAll();
-        View::renderTemplate('Home/events.html',['events' => $events]);
+        $id = $this->route_params["id"];
+        $events = Events::getEvents($id);
+        echo json_encode($events);
+        //View::renderTemplate('Home/events.html',['events' => $events]);
     }
 }
